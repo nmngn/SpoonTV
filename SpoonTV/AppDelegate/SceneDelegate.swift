@@ -16,13 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         window?.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
         window?.makeKeyAndVisible()
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.25) {
-            self.window?.rootViewController = UIStoryboard(name: "NextLaunchScreen", bundle: nil).instantiateInitialViewController()
-            guard let _ = (scene as? UIWindowScene) else { return }
-        }
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
-    
+
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

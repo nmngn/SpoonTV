@@ -9,34 +9,31 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NSObject_Rx
+import Reusable
 
-final class NextLaunchScreenViewController: UIViewController {
+final class AutoScrollingLSViewController: UIViewController{
     
     @IBOutlet private weak var scrollView: UIScrollView!
-    
-    let bag = DisposeBag()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         scheduledTimerWithTimeInterval()
     }
-    func scheduledTimerWithTimeInterval(){
-        Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(self.animateScrollView), userInfo: nil, repeats: true)
-    }
     
-    @objc private func animateScrollView() {
-        
+    private func scheduledTimerWithTimeInterval(){
         let scrollWidth = scrollView.bounds.width / 5
         let currentXOffset = scrollView.contentOffset.x
         let lastXPos = currentXOffset + scrollWidth
-        let observable = Observable.just(lastXPos)
         
-        observable
-            .filter { $0 < 180 }
-            .subscribe(onNext: { _ in
+        Observable<Int>.interval(.milliseconds(20), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [unowned self] _ in
                 self.scrollView.setContentOffset(CGPoint(x: lastXPos, y: 0), animated: true)
             })
-            .disposed(by: bag)
-        
+            .disposed(by: rx.disposeBag)
     }
+}
+
+extension AutoScrollingLSViewController: StoryboardSceneBased {
+    static let sceneStoryboard = UIStoryboard(name: "AutoScrollingLS", bundle: nil)
 }
