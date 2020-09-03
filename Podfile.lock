@@ -44,6 +44,7 @@ PODS:
   - SDWebImage (5.9.0):
     - SDWebImage/Core (= 5.9.0)
   - SDWebImage/Core (5.9.0)
+  - SwiftLint (0.40.1)
   - Then (2.7.0)
   - Validator (3.2.1)
 
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift (~> 5)
   - SDWebImage
+  - SwiftLint
   - Then
   - Validator
 
@@ -85,6 +87,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SDWebImage
+    - SwiftLint
     - Then
     - Validator
 
@@ -107,9 +110,10 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
+  SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   Validator: 80a6f567220c962dfd2d9928ae98a8c1d164f6f4
 
-PODFILE CHECKSUM: cb6d29fa58709f1113691b1ae195d308809fbe70
+PODFILE CHECKSUM: 6f2027d08a010927b834654dc5581d0dc037ecb1
 
 COCOAPODS: 1.10.0.beta.2
