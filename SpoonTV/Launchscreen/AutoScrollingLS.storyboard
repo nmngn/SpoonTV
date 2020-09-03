@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Auto ScrollingLS View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController storyboardIdentifier="AutoScrollingLSViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="01J-lp-oVM" customClass="AutoScrollingLSViewController" customModule="SpoonTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHO-tt-tEp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The world’s most popular and authoritative source for movies and series." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-YC-lTa">
+                                        <rect key="frame" x="45" y="731" width="610" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="934762" translatesAutoresizingMaskIntoConstraints="NO" id="hm8-iH-2sw">
+                                        <rect key="frame" x="0.0" y="0.0" width="500" height="896"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="896" id="YWu-vk-JS7"/>
+                                            <constraint firstAttribute="width" constant="500" id="oTJ-WG-Ico"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The world’s most popular and authoritative source for movies and series." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kf-uA-yxK">
+                                        <rect key="frame" x="3" y="731" width="484" height="83"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="hm8-iH-2sw" secondAttribute="bottom" id="8jh-Oh-cRF"/>
+                                    <constraint firstItem="hm8-iH-2sw" firstAttribute="leading" secondItem="WHO-tt-tEp" secondAttribute="leading" id="Mke-M8-FVp"/>
+                                    <constraint firstItem="hm8-iH-2sw" firstAttribute="top" secondItem="WHO-tt-tEp" secondAttribute="top" id="dWu-A1-lP2"/>
+                                    <constraint firstAttribute="trailing" secondItem="hm8-iH-2sw" secondAttribute="trailing" id="kBJ-EZ-xlB"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WHO-tt-tEp" firstAttribute="trailing" secondItem="Bcu-3y-fUS" secondAttribute="trailing" id="FbX-2Q-9sY"/>
+                            <constraint firstAttribute="bottom" secondItem="WHO-tt-tEp" secondAttribute="bottom" id="MUy-2L-Ktk"/>
+                            <constraint firstItem="WHO-tt-tEp" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="THu-3f-DHY"/>
+                            <constraint firstItem="WHO-tt-tEp" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fMp-Mm-h4s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aVt-jF-gWB"/>
+                    <connections>
+                        <outlet property="scrollView" destination="WHO-tt-tEp" id="me7-fr-vVv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2782.608695652174" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="934762" width="4000" height="2490"/>
+    </resources>
+</document>
