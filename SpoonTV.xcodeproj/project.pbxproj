@@ -16,7 +16,16 @@
 		360BF4B324FCD8330055C876 /* AutoScrollingLSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360BF4B024FCD8330055C876 /* AutoScrollingLSViewController.swift */; };
 		360BF4B424FCD8330055C876 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 360BF4B124FCD8330055C876 /* LaunchScreen.storyboard */; };
 		360BF4B524FCD8330055C876 /* AutoScrollingLS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 360BF4B224FCD8330055C876 /* AutoScrollingLS.storyboard */; };
-		36586CE424FE01BF00721F27 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE324FE01BF00721F27 /* LaunchScreenViewController.swift */; };
+		36586CE624FE3D3900721F27 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE524FE3D3900721F27 /* AppViewModel.swift */; };
+		36586CE824FE3D4600721F27 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE724FE3D4600721F27 /* AppNavigator.swift */; };
+		36586CEA24FE3D5400721F27 /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE924FE3D5400721F27 /* AppUseCase.swift */; };
+		36586CEC24FE3F9900721F27 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CEB24FE3F9900721F27 /* MainViewModel.swift */; };
+		36586CEE24FE3FA100721F27 /* MainNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CED24FE3FA100721F27 /* MainNavigator.swift */; };
+		36586CF024FE3FAC00721F27 /* MainUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CEF24FE3FAC00721F27 /* MainUseCase.swift */; };
+		368A30D825009A4C002973E7 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A30D725009A4C002973E7 /* UIView+.swift */; };
+		36930EE824FF305E00A54C2F /* AutoScrollingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36930EE724FF305E00A54C2F /* AutoScrollingViewModel.swift */; };
+		36930EEA24FF306D00A54C2F /* AutoScrollingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36930EE924FF306D00A54C2F /* AutoScrollingNavigator.swift */; };
+		36930EEC24FF307D00A54C2F /* AutoScrollingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36930EEB24FF307D00A54C2F /* AutoScrollingUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +40,16 @@
 		360BF4B024FCD8330055C876 /* AutoScrollingLSViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoScrollingLSViewController.swift; sourceTree = "<group>"; };
 		360BF4B124FCD8330055C876 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		360BF4B224FCD8330055C876 /* AutoScrollingLS.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AutoScrollingLS.storyboard; sourceTree = "<group>"; };
-		36586CE324FE01BF00721F27 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
+		36586CE524FE3D3900721F27 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		36586CE724FE3D4600721F27 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
+		36586CE924FE3D5400721F27 /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
+		36586CEB24FE3F9900721F27 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		36586CED24FE3FA100721F27 /* MainNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigator.swift; sourceTree = "<group>"; };
+		36586CEF24FE3FAC00721F27 /* MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUseCase.swift; sourceTree = "<group>"; };
+		368A30D725009A4C002973E7 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		36930EE724FF305E00A54C2F /* AutoScrollingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollingViewModel.swift; sourceTree = "<group>"; };
+		36930EE924FF306D00A54C2F /* AutoScrollingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollingNavigator.swift; sourceTree = "<group>"; };
+		36930EEB24FF307D00A54C2F /* AutoScrollingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollingUseCase.swift; sourceTree = "<group>"; };
 		7CB5C4E547503D1E22A6934A /* Pods-SpoonTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpoonTV.debug.xcconfig"; path = "Target Support Files/Pods-SpoonTV/Pods-SpoonTV.debug.xcconfig"; sourceTree = "<group>"; };
 		A8FDDCAB5B2CF6F8536F78C7 /* Pods-SpoonTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpoonTV.release.xcconfig"; path = "Target Support Files/Pods-SpoonTV/Pods-SpoonTV.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +93,6 @@
 				364AEEBE24FCF327002447CC /* Domain */,
 				364AEEBF24FCF32D002447CC /* Platform */,
 				364AEEC024FCF33A002447CC /* Scenes */,
-				360BF4B724FCD8E90055C876 /* Launchscreen */,
 				360BF4A824FCD7BA0055C876 /* Info.plist */,
 				360BF4A324FCD7BA0055C876 /* Assets.xcassets */,
 			);
@@ -89,17 +106,6 @@
 				360BF49C24FCD7B90055C876 /* SceneDelegate.swift */,
 			);
 			path = AppDelegate;
-			sourceTree = "<group>";
-		};
-		360BF4B724FCD8E90055C876 /* Launchscreen */ = {
-			isa = PBXGroup;
-			children = (
-				360BF4B124FCD8330055C876 /* LaunchScreen.storyboard */,
-				36586CE324FE01BF00721F27 /* LaunchScreenViewController.swift */,
-				360BF4B224FCD8330055C876 /* AutoScrollingLS.storyboard */,
-				360BF4B024FCD8330055C876 /* AutoScrollingLSViewController.swift */,
-			);
-			path = Launchscreen;
 			sourceTree = "<group>";
 		};
 		364AEEBD24FCF319002447CC /* Utils */ = {
@@ -129,9 +135,10 @@
 		364AEEC024FCF33A002447CC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				364AEEC424FCF370002447CC /* Storyboard */,
 				364AEEC324FCF364002447CC /* App */,
+				364AEEC424FCF370002447CC /* Storyboard */,
 				364AEEC224FCF35C002447CC /* Main */,
+				36FF29EB24FEA28C0095221B /* AutoScrolling */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 		364AEEC124FCF34E002447CC /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				368A30D725009A4C002973E7 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -147,6 +155,9 @@
 			isa = PBXGroup;
 			children = (
 				360BF49E24FCD7B90055C876 /* MainViewController.swift */,
+				36586CEB24FE3F9900721F27 /* MainViewModel.swift */,
+				36586CED24FE3FA100721F27 /* MainNavigator.swift */,
+				36586CEF24FE3FAC00721F27 /* MainUseCase.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -154,6 +165,9 @@
 		364AEEC324FCF364002447CC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				36586CE524FE3D3900721F27 /* AppViewModel.swift */,
+				36586CE724FE3D4600721F27 /* AppNavigator.swift */,
+				36586CE924FE3D5400721F27 /* AppUseCase.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -162,6 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				360BF4A024FCD7B90055C876 /* Main.storyboard */,
+				360BF4B124FCD8330055C876 /* LaunchScreen.storyboard */,
+				360BF4B224FCD8330055C876 /* AutoScrollingLS.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -227,6 +243,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		36FF29EB24FEA28C0095221B /* AutoScrolling */ = {
+			isa = PBXGroup;
+			children = (
+				360BF4B024FCD8330055C876 /* AutoScrollingLSViewController.swift */,
+				36930EE724FF305E00A54C2F /* AutoScrollingViewModel.swift */,
+				36930EE924FF306D00A54C2F /* AutoScrollingNavigator.swift */,
+				36930EEB24FF307D00A54C2F /* AutoScrollingUseCase.swift */,
+			);
+			path = AutoScrolling;
+			sourceTree = "<group>";
+		};
 		90C2C63A763BA9CF22814F4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +275,7 @@
 				360BF49424FCD7B90055C876 /* Frameworks */,
 				360BF49524FCD7B90055C876 /* Resources */,
 				A44BCF5FC73DF0EE4180EF1D /* [CP] Embed Pods Frameworks */,
+				36930EF324FF925100A54C2F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -306,6 +334,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		36930EF324FF925100A54C2F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		516A8DCE51AD1EC3654A6D39 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,9 +399,18 @@
 			files = (
 				360BF4B324FCD8330055C876 /* AutoScrollingLSViewController.swift in Sources */,
 				360BF49F24FCD7B90055C876 /* MainViewController.swift in Sources */,
+				368A30D825009A4C002973E7 /* UIView+.swift in Sources */,
+				36930EE824FF305E00A54C2F /* AutoScrollingViewModel.swift in Sources */,
+				36586CEE24FE3FA100721F27 /* MainNavigator.swift in Sources */,
+				36586CE824FE3D4600721F27 /* AppNavigator.swift in Sources */,
+				36586CE624FE3D3900721F27 /* AppViewModel.swift in Sources */,
 				360BF49B24FCD7B90055C876 /* AppDelegate.swift in Sources */,
-				36586CE424FE01BF00721F27 /* LaunchScreenViewController.swift in Sources */,
+				36586CEA24FE3D5400721F27 /* AppUseCase.swift in Sources */,
+				36930EEC24FF307D00A54C2F /* AutoScrollingUseCase.swift in Sources */,
+				36930EEA24FF306D00A54C2F /* AutoScrollingNavigator.swift in Sources */,
 				360BF49D24FCD7B90055C876 /* SceneDelegate.swift in Sources */,
+				36586CF024FE3FAC00721F27 /* MainUseCase.swift in Sources */,
+				36586CEC24FE3F9900721F27 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

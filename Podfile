@@ -33,4 +33,5 @@ target 'SpoonTV' do
     #
     pod 'MBProgressHUD'
     pod 'SDWebImage'
+    pod 'SwiftLint'
 end

@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import Reusable
+import MGArchitecture
 
-class MainViewController: UIViewController {
-
+final class MainViewController: UIViewController, BindableType {
+    
+    var viewModel: MainViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
+    
+    func bindViewModel() {
+    }
 }
 
+extension MainViewController: StoryboardSceneBased {
+    static let sceneStoryboard = UIStoryboard(name: "Main", bundle: nil)
+}
