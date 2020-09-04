@@ -1,5 +1,5 @@
 //
-//  GenresTabbar.swift
+//  GenreTabbar.swift
 //  SpoonTV
 //
 //  Created by Nam Ngây on 9/3/20.
@@ -9,16 +9,16 @@
 import Foundation
 import ObjectMapper
 
-struct GenresTabbar: Mappable {
-    var genresId = 0
-    var genresName = ""
+struct GenreTabbar: Mappable {
+    var genreId = 0
+    var genreName = ""
     
     init?(map: Map) {
         mapping(map: map)
     }
     
     mutating func mapping(map: Map) {
-        genresId <- map["id"]
-        genresName <- map["name"]
+        genreId <- map["id"]
+        genreName <- map["name"]
     }
 }
