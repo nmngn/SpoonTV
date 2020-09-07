@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol AutoScrollingUseCaseType {
-    
+
 }
 
 struct AutoScrollingUseCase: AutoScrollingUseCaseType {

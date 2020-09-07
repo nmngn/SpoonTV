@@ -59,7 +59,6 @@ struct APIService {
                         
                     case .failure:
                         observer.onError(BaseError.networkError)
-                        observer.onCompleted()
                     }
                 }
             return Disposables.create()
