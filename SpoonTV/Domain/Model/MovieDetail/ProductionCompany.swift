@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct ProductionCompany: Mappable{
+struct ProductionCompany: Mappable {
     var companyId = 0
     var companyName = ""
     var originCountry = ""

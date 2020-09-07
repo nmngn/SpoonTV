@@ -1,5 +1,5 @@
 //
-//  GenresSelected.swift
+//  GenreSelected.swift
 //  SpoonTV
 //
 //  Created by Nam Ngây on 9/3/20.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct GenresSelected: Mappable {
+struct GenreSelected: Mappable {
     
     var movieId = 0
     var posterPath = ""
