@@ -28,6 +28,7 @@ class BaseRequest {
         self.url = url
         self.requestType = requestType
         self.body = body
+        self.body?["api_key"] = APIKey.apiKey
     }
     
     var encoding: ParameterEncoding {

@@ -30,9 +30,6 @@ extension AutoScrollingViewModel: ViewModelType {
             .do(onNext: { _ in
                 self.navigator.toMain()
             })
-        
-        return Output(
-            toMain: toMain
-        )
+        return Output(toMain: toMain)
     }
 }
