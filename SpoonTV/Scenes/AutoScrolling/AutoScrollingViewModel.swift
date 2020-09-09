@@ -22,14 +22,12 @@ extension AutoScrollingViewModel: ViewModelType {
     }
     
     struct Output {
-        let toMain: Driver<Void>
+        let toMainTabbar: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
-        let toMain = input.loadTrigger
-            .do(onNext: { _ in
-                self.navigator.toMain()
-            })
-        return Output(toMain: toMain)
+        let toMainTabbar = input.loadTrigger
+            .do(onNext: self.navigator.toMainTabbar)
+        return Output(toMainTabbar: toMainTabbar)
     }
 }

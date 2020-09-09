@@ -20,4 +20,8 @@ extension UIView {
         }, completion: { _ in }
         )
     }
+    
+    func makeRound() {
+        layer.cornerRadius = frame.height / 20
+    }
 }

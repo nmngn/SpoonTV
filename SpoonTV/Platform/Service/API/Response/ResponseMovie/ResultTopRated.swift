@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-final class ResultToprated: Mappable {
+final class ResultTopRated: Mappable {
     var resultTopRated = [TopRatedMovie]()
     
     required init(map: Map) {

@@ -29,18 +29,18 @@ final class MovieRepositories: MovieRepositoriesType {
     }
     
     func getTopRatedRepo(input: TopRatedRequest) -> Observable<[TopRatedMovie]> {
-           return api.request(input: input)
-               .map {(response: ResultToprated) -> [TopRatedMovie] in
-                   return response.resultTopRated
-               }
-       }
+        return api.request(input: input)
+            .map {(response: ResultTopRated) -> [TopRatedMovie] in
+                return response.resultTopRated
+            }
+    }
     
     func getUpComingRepo(input: UpComingRequest) -> Observable<[UpComingMovie]> {
-          return api.request(input: input)
-              .map {(response: ResultUpComing) -> [UpComingMovie] in
-                  return response.resultUpcoming
-              }
-      }
+        return api.request(input: input)
+            .map {(response: ResultUpComing) -> [UpComingMovie] in
+                return response.resultUpcoming
+            }
+    }
     
     func getDetailMovieRepo(input: DetailRequest) -> Observable<MovieDetail> {
         return api.request(input: input)
@@ -50,9 +50,9 @@ final class MovieRepositories: MovieRepositoriesType {
     }
     
     func getSimilarMovieRepo(input: SimilarRequest) -> Observable<[SimilarMovie]> {
-          return api.request(input: input)
-              .map {(response: ResultSimilar) -> [SimilarMovie] in
-                  return response.resultSimilar
-              }
+        return api.request(input: input)
+            .map {(response: ResultSimilar) -> [SimilarMovie] in
+                return response.resultSimilar
+            }
     }
 }

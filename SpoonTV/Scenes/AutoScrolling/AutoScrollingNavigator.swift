@@ -11,17 +11,18 @@ import RxSwift
 import RxCocoa
 
 protocol AutoScrollingNavigatorType {
-    func toMain()
+    func toMainTabbar()
 }
 
 struct AutoScrollingNavigator: AutoScrollingNavigatorType {
-    unowned let window: UIWindow
+    unowned let navigation: UINavigationController
     
-    func toMain() {
-        let viewController = MainViewController.instantiate()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        
-        window.rootViewController = navigationController
-        window.makeKeyAndVisible()
+    func toMainTabbar() {
+        let mainTabbarViewController = MainTabbarController.instantiate()
+        let navigator = MainTabbarNavigator(navigator: navigation)
+        let useCase = MainTabbarUseCase()
+        let mainTabbarViewModel = MainTabbarViewModel(navigator: navigator, useCase: useCase)
+        mainTabbarViewController.bindViewModel(to: mainTabbarViewModel)
+        navigation.viewControllers.append(mainTabbarViewController)
     }
 }

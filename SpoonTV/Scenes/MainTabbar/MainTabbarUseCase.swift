@@ -1,5 +1,5 @@
 //
-//  MainUseCase.swift
+//  MainTabbarUseCase.swift
 //  SpoonTV
 //
 //  Created by Nam Ngây on 9/1/20.
@@ -12,10 +12,10 @@ import RxCocoa
 import MGArchitecture
 import MGAPIService
 
-protocol MainUseCaseType {
+protocol MainTabbarUseCaseType {
 
 }
 
-struct MainUseCase: MainUseCaseType {
+struct MainTabbarUseCase: MainTabbarUseCaseType {
 
 }
