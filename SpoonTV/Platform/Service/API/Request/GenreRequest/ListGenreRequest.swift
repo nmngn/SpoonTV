@@ -12,10 +12,8 @@ import Alamofire
 
 final class ListGenreRequest: BaseRequest {
     
-    required init(page: Int) {
-        let body: [String: Any] = [
-            "page": page
-        ]
+    required init() {
+        let body: [String: Any] = [:]
         super.init(url: URLs.Genres.list, requestType: .get, body: body)
     }
 }

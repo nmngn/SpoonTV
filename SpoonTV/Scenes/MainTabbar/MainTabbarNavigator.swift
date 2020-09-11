@@ -17,6 +17,7 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
     
     func getTabbarItems() -> [UIViewController] {
         let mainTabBarController = MainTabbarController.instantiate()
+// MARK: - Discover Tabbar
         let discoverController = DiscoverViewController.instantiate().then {
             $0.tabBarItem = UITabBarItem(title: "Discover",
                                          image: UIImage(systemName: "star"),
@@ -27,9 +28,20 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
         let discoverViewModel = DiscoverViewModel(navigator: discoverNavigator,
                                                   useCase: discoverUseCase)
         discoverController.bindViewModel(to: discoverViewModel)
-        mainTabBarController.do {
-            $0.viewControllers = [discoverController]
+        
+// MARK: - Genre Tabbar
+        let genreController = GenreViewController.instantiate().then {
+            $0.tabBarItem = UITabBarItem(title: "Genre",
+                                         image: UIImage(systemName: "tv"),
+                                         selectedImage: nil)
         }
-        return [discoverController]
+        let genreNavigator = GenreNavigator(navigator: navigator)
+        let genreUseCase = GenreUseCase()
+        let genreViewModel = GenreViewModel(navigator: genreNavigator, useCase: genreUseCase)
+        genreController.bindViewModel(to: genreViewModel)
+        mainTabBarController.do {
+            $0.viewControllers = [discoverController, genreController]
+        }
+        return [discoverController, genreController]
     }
 }
