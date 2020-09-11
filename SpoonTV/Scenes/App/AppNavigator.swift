@@ -19,7 +19,7 @@ struct AppNavigator: AppNavigatorType {
     func toAutoScrolling() {
         let viewcontroller = AutoScrollingLSViewController.instantiate()
         let navigationController = UINavigationController()
-        let navigator = AutoScrollingNavigator(window: window)
+        let navigator = AutoScrollingNavigator(navigation: navigationController)
         let useCase = AutoScrollingUseCase()
         let viewModel = AutoScrollingViewModel(navigator: navigator, useCase: useCase)
         viewcontroller.bindViewModel(to: viewModel)

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="75r-Xw-5c6">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Tabbar Controller-->
+        <scene sceneID="c4j-et-TC4">
+            <objects>
+                <tabBarController storyboardIdentifier="MainTabbarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="75r-Xw-5c6" customClass="MainTabbarController" customModule="SpoonTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5e0-8R-HNZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <outlet property="tabBar" destination="5e0-8R-HNZ" id="4ki-XM-Mbr"/>
+                        <segue destination="nLT-0f-dFu" kind="relationship" relationship="viewControllers" id="9c4-lV-2an"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWQ-9h-5QI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-83" y="299"/>
+        </scene>
+        <!--DiscoverScene-->
+        <scene sceneID="B5D-3u-1OG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DiscoverScene" id="nLT-0f-dFu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="magnifyingglass" catalog="system" id="pdw-iM-qjY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DS8-1P-GaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="157"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="yPh-BV-dxG">
+            <objects>
+                <viewControllerPlaceholder id="jou-oR-LjB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="cJT-Fv-U3L"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0D-Cs-26X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="529" y="299"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="vpg-VZ-Hth">
+            <objects>
+                <viewControllerPlaceholder id="8jg-rp-2AI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="o9I-py-5s0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1gf-zM-bPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="438"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+    </resources>
+</document>

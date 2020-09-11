@@ -61,7 +61,7 @@ final class AutoScrollingLSViewController: UIViewController, BindableType {
         let input = AutoScrollingViewModel.Input(loadTrigger:
             nextButton.rx.tap.asDriver())
         let output = viewModel.transform(input)
-        output.toMain
+        output.toMainTabbar
             .drive()
             .disposed(by: rx.disposeBag)
     }

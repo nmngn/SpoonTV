@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct UpComingMovie {
+struct UpComingMovie: Mappable {
     
     var movieId = 0
     var posterPath = ""
