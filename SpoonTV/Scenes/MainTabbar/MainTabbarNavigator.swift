@@ -39,9 +39,21 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
         let genreUseCase = GenreUseCase()
         let genreViewModel = GenreViewModel(navigator: genreNavigator, useCase: genreUseCase)
         genreController.bindViewModel(to: genreViewModel)
-        mainTabBarController.do {
-            $0.viewControllers = [discoverController, genreController]
+        
+// MARK: - Artist Tabbar
+        let artistController = ArtistViewController.instantiate().then {
+            $0.tabBarItem = UITabBarItem(title: "Artist",
+                                         image: UIImage(systemName: "person"),
+                                         selectedImage: nil)
         }
-        return [discoverController, genreController]
+        let artistNavigator = ArtistNavigator(navigation: navigator)
+        let artistUseCase = ArtistUseCase()
+        let artistViewModel = ArtistViewModel(navigator: artistNavigator, useCase: artistUseCase)
+        artistController.bindViewModel(to: artistViewModel)
+                
+        mainTabBarController.do {
+            $0.viewControllers = [discoverController, genreController, artistController]
+        }
+        return [discoverController, genreController, artistController]
     }
 }

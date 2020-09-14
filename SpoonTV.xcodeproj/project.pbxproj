@@ -31,6 +31,13 @@
 		3613E51E2500F3DB00684B9B /* MovieOfArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3613E51D2500F3DB00684B9B /* MovieOfArtist.swift */; };
 		3613E5222500F42A00684B9B /* SearchMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3613E5212500F42A00684B9B /* SearchMovie.swift */; };
 		3613E5252500F44600684B9B /* SearchArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3613E5242500F44600684B9B /* SearchArtist.swift */; };
+		364D2DAC250F00A900746DC7 /* ArtistUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D2DA8250F00A900746DC7 /* ArtistUseCase.swift */; };
+		364D2DAD250F00A900746DC7 /* ArtistNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D2DA9250F00A900746DC7 /* ArtistNavigator.swift */; };
+		364D2DAE250F00A900746DC7 /* ArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D2DAA250F00A900746DC7 /* ArtistViewModel.swift */; };
+		364D2DAF250F00A900746DC7 /* ArtistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D2DAB250F00A900746DC7 /* ArtistViewController.swift */; };
+		364D2DB3250F00C500746DC7 /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 364D2DB1250F00C500746DC7 /* ArtistCollectionViewCell.xib */; };
+		364D2DB4250F00C500746DC7 /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D2DB2250F00C500746DC7 /* ArtistCollectionViewCell.swift */; };
+		364D2DB6250F011D00746DC7 /* ArtistScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 364D2DB5250F011D00746DC7 /* ArtistScene.storyboard */; };
 		36586CE624FE3D3900721F27 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE524FE3D3900721F27 /* AppViewModel.swift */; };
 		36586CE824FE3D4600721F27 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE724FE3D4600721F27 /* AppNavigator.swift */; };
 		36586CEA24FE3D5400721F27 /* AppUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36586CE924FE3D5400721F27 /* AppUseCase.swift */; };
@@ -124,6 +131,13 @@
 		3613E51D2500F3DB00684B9B /* MovieOfArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOfArtist.swift; sourceTree = "<group>"; };
 		3613E5212500F42A00684B9B /* SearchMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovie.swift; sourceTree = "<group>"; };
 		3613E5242500F44600684B9B /* SearchArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtist.swift; sourceTree = "<group>"; };
+		364D2DA8250F00A900746DC7 /* ArtistUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistUseCase.swift; sourceTree = "<group>"; };
+		364D2DA9250F00A900746DC7 /* ArtistNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistNavigator.swift; sourceTree = "<group>"; };
+		364D2DAA250F00A900746DC7 /* ArtistViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
+		364D2DAB250F00A900746DC7 /* ArtistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistViewController.swift; sourceTree = "<group>"; };
+		364D2DB1250F00C500746DC7 /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
+		364D2DB2250F00C500746DC7 /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
+		364D2DB5250F011D00746DC7 /* ArtistScene.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ArtistScene.storyboard; sourceTree = "<group>"; };
 		36586CE524FE3D3900721F27 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		36586CE724FE3D4600721F27 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		36586CE924FE3D5400721F27 /* AppUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUseCase.swift; sourceTree = "<group>"; };
@@ -349,6 +363,7 @@
 				364AEEC224FCF35C002447CC /* MainTabbar */,
 				36831A272508C732005FD99F /* DiscoverScene */,
 				36FAC5F9250B701500A58035 /* GenreScene */,
+				364D2DA7250F008900746DC7 /* ArtistScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -391,6 +406,7 @@
 				36831A382508C784005FD99F /* MainTabbar.storyboard */,
 				36831A3A2508C78B005FD99F /* DiscoverScene.storyboard */,
 				36FAC607250B707A00A58035 /* GenreScene.storyboard */,
+				364D2DB5250F011D00746DC7 /* ArtistScene.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -468,6 +484,27 @@
 				3613E51F2500F41300684B9B /* Search */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		364D2DA7250F008900746DC7 /* ArtistScene */ = {
+			isa = PBXGroup;
+			children = (
+				364D2DB0250F00BB00746DC7 /* Cell */,
+				364D2DAB250F00A900746DC7 /* ArtistViewController.swift */,
+				364D2DAA250F00A900746DC7 /* ArtistViewModel.swift */,
+				364D2DA9250F00A900746DC7 /* ArtistNavigator.swift */,
+				364D2DA8250F00A900746DC7 /* ArtistUseCase.swift */,
+			);
+			path = ArtistScene;
+			sourceTree = "<group>";
+		};
+		364D2DB0250F00BB00746DC7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				364D2DB2250F00C500746DC7 /* ArtistCollectionViewCell.swift */,
+				364D2DB1250F00C500746DC7 /* ArtistCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		36751EF22506995A00554A18 /* MovieRequest */ = {
@@ -686,6 +723,8 @@
 				36EAF7432509FFBE00BE18BD /* UpComingCollectionViewCell.xib in Resources */,
 				36FAC608250B707A00A58035 /* GenreScene.storyboard in Resources */,
 				36831A392508C784005FD99F /* MainTabbar.storyboard in Resources */,
+				364D2DB3250F00C500746DC7 /* ArtistCollectionViewCell.xib in Resources */,
+				364D2DB6250F011D00746DC7 /* ArtistScene.storyboard in Resources */,
 				36F889DB250945AE006A7A1D /* PopularCollectionViewCell.xib in Resources */,
 				36FAC605250B706000A58035 /* GenreTableViewCell.xib in Resources */,
 				360BF4B524FCD8330055C876 /* AutoScrollingLS.storyboard in Resources */,
@@ -782,6 +821,7 @@
 				36930EE824FF305E00A54C2F /* AutoScrollingViewModel.swift in Sources */,
 				36FAC606250B706000A58035 /* GenreTableViewCell.swift in Sources */,
 				36751EEF2506994600554A18 /* GenreRepositories.swift in Sources */,
+				364D2DAC250F00A900746DC7 /* ArtistUseCase.swift in Sources */,
 				36586CE824FE3D4600721F27 /* AppNavigator.swift in Sources */,
 				36B874B0250210FE00DA4DD8 /* ResultUpComing.swift in Sources */,
 				36586CE624FE3D3900721F27 /* AppViewModel.swift in Sources */,
@@ -800,6 +840,8 @@
 				36BB36C72501EBCA006FFB5C /* BaseRequest.swift in Sources */,
 				36BB36CB2501ED25006FFB5C /* BaseError.swift in Sources */,
 				36930EEC24FF307D00A54C2F /* AutoScrollingUseCase.swift in Sources */,
+				364D2DAE250F00A900746DC7 /* ArtistViewModel.swift in Sources */,
+				364D2DAD250F00A900746DC7 /* ArtistNavigator.swift in Sources */,
 				36751F022506999500554A18 /* ListGenreRequest.swift in Sources */,
 				36930EEA24FF306D00A54C2F /* AutoScrollingNavigator.swift in Sources */,
 				36EAF7422509FFBE00BE18BD /* UpComingCollectionViewCell.swift in Sources */,
@@ -819,6 +861,8 @@
 				36751EEE2506994600554A18 /* ArtistRepositories.swift in Sources */,
 				36751F09250699A400554A18 /* ListArtistRequest.swift in Sources */,
 				3613E5222500F42A00684B9B /* SearchMovie.swift in Sources */,
+				364D2DB4250F00C500746DC7 /* ArtistCollectionViewCell.swift in Sources */,
+				364D2DAF250F00A900746DC7 /* ArtistViewController.swift in Sources */,
 				36FAC5FF250B704E00A58035 /* GenreViewController.swift in Sources */,
 				3613E51C2500F11A00684B9B /* ArtistDetail.swift in Sources */,
 				36BB36C52501E5D6006FFB5C /* APIService.swift in Sources */,

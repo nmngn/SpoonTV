@@ -9,9 +9,10 @@
 import Foundation
 import ObjectMapper
 import RxSwift
+import MGArchitecture
 
 protocol ArtistRepositoriesType {
-    func getListArtistRepo(input: ListArtistRequest) -> Observable<[Artist]>
+    func getListArtistRepo(page: Int, input: ListArtistRequest) -> Observable<PagingInfo<Artist>>
     func getSelectedArtistRepo(input: SelectedArtistRequest ) -> Observable<ArtistDetail>
     func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[MovieOfArtist]>
 }
@@ -19,18 +20,18 @@ protocol ArtistRepositoriesType {
 final class ArtistRepositories: ArtistRepositoriesType {
     private let api = APIService.shared
     
-    func getListArtistRepo(input: ListArtistRequest) -> Observable<[Artist]> {
+    func getListArtistRepo(page: Int, input: ListArtistRequest) -> Observable<PagingInfo<Artist>> {
         return api.request(input: input)
-            .map {(response: ResultArtist) -> [Artist] in
-                return response.resultArtist
+            .map { (response: ResultArtist) in
+                return PagingInfo(page: page,
+                                  items: response.resultArtist,
+                                  hasMorePages: true)
             }
     }
     
     func getSelectedArtistRepo(input: SelectedArtistRequest) -> Observable<ArtistDetail> {
         return api.request(input: input)
-            .map {(response: ArtistDetail)  in
-                return response
-            }
+            .map { $0 }
     }
     
     func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[MovieOfArtist]> {
@@ -39,4 +40,5 @@ final class ArtistRepositories: ArtistRepositoriesType {
                 return  response.resultMovieArtist
             }
     }
+    
 }
