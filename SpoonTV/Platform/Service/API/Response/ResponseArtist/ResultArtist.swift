@@ -12,7 +12,7 @@ import ObjectMapper
 final class ResultArtist: Mappable {
     var resultArtist = [Artist]()
     
-    required init(map: Map) {
+    required init?(map: Map) {
         mapping(map: map)
     }
     
