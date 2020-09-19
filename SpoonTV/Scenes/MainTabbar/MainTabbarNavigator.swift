@@ -23,7 +23,7 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
                                          image: UIImage(systemName: "star"),
                                          selectedImage: nil)
         }
-        let discoverNavigator = DiscoverNavigator(navigator: navigator)
+        let discoverNavigator = DiscoverNavigator(navigation: navigator)
         let discoverUseCase = DiscoverUseCase()
         let discoverViewModel = DiscoverViewModel(navigator: discoverNavigator,
                                                   useCase: discoverUseCase)

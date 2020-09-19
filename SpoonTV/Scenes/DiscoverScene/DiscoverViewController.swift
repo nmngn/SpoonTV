@@ -14,10 +14,13 @@ import MGArchitecture
 import RxDataSources
 
 final class DiscoverViewController: UIViewController, BindableType, Reusable {
-        
+    
     @IBOutlet private weak var popularCollectionView: UICollectionView!
     @IBOutlet private weak var topRatedCollectionView: UICollectionView!
     @IBOutlet private weak var upComingCollectionView: UICollectionView!
+    @IBOutlet private weak var seeMorePopular: UIButton!
+    @IBOutlet private weak var seeMoreTopRated: UIButton!
+    @IBOutlet private weak var seeMoreUpComing: UIButton!
     
     var viewModel: DiscoverViewModel!
     
@@ -41,8 +44,12 @@ final class DiscoverViewController: UIViewController, BindableType, Reusable {
     func bindViewModel() {
         let input = DiscoverViewModel.Input(loadTrigger: Driver.just(()),
                                             selectTrigger: Driver.merge(
-            popularCollectionView.rx.itemSelected.asDriver(),
-            topRatedCollectionView.rx.itemSelected.asDriver()))
+                                                popularCollectionView.rx.itemSelected.asDriver(),
+                                                topRatedCollectionView.rx.itemSelected.asDriver(),
+                                                upComingCollectionView.rx.itemSelected.asDriver()),
+                                            morePopularTrigger: seeMorePopular.rx.tap.asDriver(),
+                                            moreTopRatedTrigger: seeMoreTopRated.rx.tap.asDriver(),
+                                            moreUpComingTrigger: seeMoreUpComing.rx.tap.asDriver())
         let output = viewModel.transfrom(input)
         
         output.error
@@ -80,6 +87,16 @@ final class DiscoverViewController: UIViewController, BindableType, Reusable {
                 return cell
             }
         .disposed(by: rx.disposeBag)
+        
+        output.morePopular
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.moreTopRated
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.moreUpcoming
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
 }
 

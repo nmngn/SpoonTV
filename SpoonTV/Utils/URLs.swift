@@ -17,6 +17,7 @@ enum URLs {
         static let upComing = url + "/movie/upcoming?language=en-US"
         static let detail = url + "/movie/%d?language=en-US"
         static let similar = url + "/movie/%d/similar?language=en-US"
+        static let moreMovie = url + "/movie/%@?language=en-US"
     }
     
     enum Genres {

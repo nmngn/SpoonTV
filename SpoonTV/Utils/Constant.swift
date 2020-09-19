@@ -10,4 +10,10 @@ import UIKit
 
 enum Constant {
     static let heightForRow: CGFloat = 230
+    static let rowHeight: CGFloat = 125
+    
+    static let popular = "Popular"
+    static let topRated = "Top Rated"
+    static let upComing = "Up coming"
+
 }

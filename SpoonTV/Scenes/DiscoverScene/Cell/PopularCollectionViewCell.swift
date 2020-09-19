@@ -15,9 +15,9 @@ final class PopularCollectionViewCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var popularImage: UIImageView!
     @IBOutlet private weak var popularTitle: UILabel!
     
-    func setContent(_ popular: PopularMovie) {
-        popularImage.sd_setImage(with: URL(string: GetImage.getImage + popular.posterPath), completed: nil)
+    func setContent(_ popular: Movie) {
+        popularImage.sd_setImage(with: URL(string: GetImage.getImage + popular.moviePoster), completed: nil)
         popularImage.makeRound()
-        popularTitle.text = popular.originalTitle
+        popularTitle.text = popular.movieTitle
     }
 }
