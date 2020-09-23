@@ -15,19 +15,16 @@ final class SearchTableViewCell: UITableViewCell, NibReusable {
     @IBOutlet private weak var searchImage: UIImageView!
     @IBOutlet private weak var searchTitle: UILabel!
     
-    func setContent(_ movies: Movie?, _ artist: Artist?, _ index: Int ) {
-        switch index {
-        case 0:
-            searchImage.sd_setImage(with: URL(string: GetImage.getImage + (movies?.moviePoster ?? "")),
-                                    completed: nil)
+    func setContentForCell(data: SearchDataType) {
+        switch data {
+        case .movie(let movie):
+            searchImage.sd_setImage(with: URL(string: GetImage.getImage + movie.moviePoster), completed: nil)
             searchImage.makeRound()
-            searchTitle.text = movies?.movieTitle
-        default:
-            searchImage.sd_setImage(with: URL(string: GetImage.getImage + (artist?.artistProfilePath ?? "")),
-                                    completed: nil)
+            searchTitle.text = movie.movieTitle
+        case .artist(let artist):
+            searchImage.sd_setImage(with: URL(string: GetImage.getImage + artist.artistProfilePath), completed: nil)
             searchImage.makeRound()
-            searchTitle.text = artist?.artistName
+            searchTitle.text = artist.artistName
         }
-        
     }
 }

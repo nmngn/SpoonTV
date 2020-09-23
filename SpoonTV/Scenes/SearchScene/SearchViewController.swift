@@ -29,7 +29,8 @@ final class SearchViewController: UIViewController, BindableType {
     func configView() {
         tableView.do {
             $0.register(cellType: SearchTableViewCell.self)
-            $0.rowHeight = 125
+            $0.rowHeight = Constant.rowHeight
+            $0.tableFooterView = UIView()
         }
     }
     
@@ -38,33 +39,19 @@ final class SearchViewController: UIViewController, BindableType {
                                         loadTrigger: Driver.just(()),
                                         reloadTrigger: tableView.refreshTrigger,
                                         loadMoreTrigger: tableView.loadMoreTrigger,
-                                        selectTrigger: tableView.rx.itemSelected.asDriver())
+                                        selectTrigger: tableView.rx.itemSelected.asDriver(),
+                                        segmentIndexTrigger: segmentedControl.rx.value.asDriver())
         
         let output = viewModel.transform(input)
-    
-        output.searchMovie
-            .filter { _ in
-                self.segmentedControl.selectedSegmentIndex == 0
-            }
-        .drive(tableView.rx.items) { tableView, index, item in
-            let indexPath = IndexPath(item: index, section: 0)
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SearchTableViewCell.self)
-            cell.setContent(item, nil, self.segmentedControl.selectedSegmentIndex)
-            return cell
-        }
-        .disposed(by: rx.disposeBag)
         
-        output.searchArtist
-            .filter { _ in
-                self.segmentedControl.selectedSegmentIndex == 1
+        output.searchData
+            .drive(self.tableView.rx.items) { tableView, index, item in
+                    let indexPath = IndexPath(item: index, section: 0)
+                    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SearchTableViewCell.self)
+                    cell.setContentForCell(data: item)
+                    return cell
             }
-        .drive(tableView.rx.items) { tableView, index, item in
-            let indexPath = IndexPath(item: index, section: 0)
-            let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SearchTableViewCell.self)
-            cell.setContent(nil, item, self.segmentedControl.selectedSegmentIndex)
-            return cell
-        }
-        .disposed(by: rx.disposeBag)
+            .disposed(by: self.rx.disposeBag)
         
         output.isLoading
             .drive()
@@ -72,6 +59,13 @@ final class SearchViewController: UIViewController, BindableType {
         
         output.isLoadingMore
             .drive(tableView.isLoadingMore)
+            .disposed(by: rx.disposeBag)
+    
+        output.isEmptyData
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.isEmptyInput
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

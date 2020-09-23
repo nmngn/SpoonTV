@@ -24,11 +24,11 @@ extension SearchViewModel: ViewModelType {
         let reloadTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
         let selectTrigger: Driver<IndexPath>
+        let segmentIndexTrigger: Driver<Int>
     }
     
     struct Output {
-        let searchMovie: Driver<[Movie]>
-        let searchArtist: Driver<[Artist]>
+        let searchData: Driver<[SearchDataType]>
         let error: Driver<Error>
         let isLoading: Driver<Bool>
         let isReloading: Driver<Bool>
@@ -44,6 +44,7 @@ extension SearchViewModel: ViewModelType {
         let textTrigger = input.textSearch
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
+            .withLatestFrom(input.segmentIndexTrigger) { ($0, $1) }
             .asDriver()
         
         let reloadTrigger = input.reloadTrigger
@@ -52,36 +53,18 @@ extension SearchViewModel: ViewModelType {
         let loadMoreTrigger = input.loadMoreTrigger
             .withLatestFrom(textTrigger)
         
-        let movieData = getPage(loadTrigger: textTrigger,
-                                reloadTrigger: reloadTrigger,
-                                loadMoreTrigger: loadMoreTrigger) { query, page in
-                                    self.useCase.getMoreMovie(page: page, query: query)
-                                        .trackError(errorTracker)
-                                        .trackActivity(activity)
+        let search = getPage(loadTrigger: Driver.merge(textTrigger),
+                             reloadTrigger: reloadTrigger,
+                             loadMoreTrigger: loadMoreTrigger) { query, page in
+                                self.useCase.getMoreSearchData(page: page, query: query.0, type: query.1)
+                                    .trackError(errorTracker)
+                                    .trackActivity(activity)
         }
         
-        let artistData = getPage(loadTrigger: textTrigger,
-                                 reloadTrigger: reloadTrigger,
-                                 loadMoreTrigger: loadMoreTrigger) { query, page in
-                                    self.useCase.getMoreArtist(page: page, query: query)
-                                        .trackError(errorTracker)
-                                        .trackActivity(activity)
-        }
+        let (page, error, isLoading, isReloading, isLoadingMore) = search.destructured
         
-        let (pageMovie, errorMovie, isLoadingMovie, isReloadingMovie, isLoadingMoreMovie) = movieData.destructured
-        let (pageArtist, errorArtist, isLoadingArtist, isReloadingArtist, isLoadingMoreArtist) = artistData.destructured
-        let error = Driver.merge(errorMovie, errorArtist)
-        let isLoading = Driver.merge(isLoadingMovie, isLoadingArtist)
-        let isReloading = Driver.merge(isReloadingMovie, isReloadingArtist)
-        let isLoadingMore = Driver.merge(isLoadingMoreMovie, isLoadingMoreArtist)
-        
-        let moviesResult = pageMovie
-            .map { $0.items }
-        
-        let artistResult = pageArtist
-            .map { $0.items }
-        
-        let isEmpty = moviesResult
+        let itemSearch = page.map { $0.items }        
+        let isEmpty = itemSearch
             .map { $0.isEmpty }
             .distinctUntilChanged()
         
@@ -89,8 +72,7 @@ extension SearchViewModel: ViewModelType {
             .map { $0.isEmpty }
             .distinctUntilChanged()
         
-        return Output(searchMovie: moviesResult,
-                      searchArtist: artistResult,
+        return Output(searchData: itemSearch,
                       error: error.asDriver(),
                       isLoading: isLoading.asDriver(),
                       isReloading: isReloading.asDriver(),

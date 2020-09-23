@@ -11,32 +11,37 @@ import MGArchitecture
 import RxSwift
 import RxCocoa
 
+enum SearchDataType {
+    case movie(Movie)
+    case artist(Artist)
+}
+
 protocol SearchUseCaseType {
-    func getMovieResult(query: String) -> Observable<PagingInfo<Movie>>
-    func getArtistResult(query: String) -> Observable<PagingInfo<Artist>>
-    func getMoreMovie(page: Int, query: String) -> Observable<PagingInfo<Movie>>
-    func getMoreArtist(page: Int, query: String) -> Observable<PagingInfo<Artist>>
+    func getMoreSearchData(page: Int, query: String, type: Int) -> Observable<PagingInfo<SearchDataType>>
+    func getSearchData(query: String, type: Int) -> Observable<PagingInfo<SearchDataType>>
 }
 
 struct SearchUseCase: SearchUseCaseType {
     let repositories = SearchRepositories()
     
-    func getMovieResult(query: String) -> Observable<PagingInfo<Movie>> {
-        getMoreMovie(page: 1, query: query)
+    func getSearchData(query: String, type: Int) -> Observable<PagingInfo<SearchDataType>> {
+        getMoreSearchData(page: 1, query: query, type: type)
     }
     
-    func getArtistResult(query: String) -> Observable<PagingInfo<Artist>> {
-        getMoreArtist(page: 1, query: query)
-        
-    }
-    
-    func getMoreMovie(page: Int, query: String) -> Observable<PagingInfo<Movie>> {
-        let request = SearchForMovieRequest(query: query, page: page)
-        return repositories.getSearchMovieRepo(page: page, input: request)
-    }
-    
-    func getMoreArtist(page: Int, query: String) -> Observable<PagingInfo<Artist>> {
-        let request = SearchForArtistRequest(query: query, page: page)
-        return repositories.getSearchArtistRepo(page: page, input: request)
+    func getMoreSearchData(page: Int, query: String, type: Int) -> Observable<PagingInfo<SearchDataType>> {
+        switch type {
+        case 0:
+            let request = SearchForMovieRequest(query: query, page: page)
+            return repositories.getSearchMovieRepo(page: page, input: request).map {
+                let items = $0.items.map { SearchDataType.movie($0) }
+                return PagingInfo(page: page, items: items)
+            }
+        default:
+            let request = SearchForArtistRequest(query: query, page: page)
+            return repositories.getSearchArtistRepo(page: page, input: request).map {
+                let items = $0.items.map { SearchDataType.artist($0) }
+                return PagingInfo(page: page, items: items)
+            }
+        }
     }
 }
