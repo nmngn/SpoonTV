@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="228-Zj-adt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="MH4-e7-WEk">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="228-Zj-adt" customClass="SearchViewController" customModule="SpoonTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zmj-cJ-w0L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y9T-aO-xef" customClass="LoadMoreTableView" customModule="MGLoadMore">
+                                <rect key="frame" x="0.0" y="127" width="414" height="735"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="Zp8-V5-dtB">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zp8-V5-dtB" id="pu4-hH-pFL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search here " translatesAutoresizingMaskIntoConstraints="NO" id="VeJ-55-6Px">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cQ0-o4-RPB">
+                                <rect key="frame" x="20" y="88" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Movie"/>
+                                    <segment title="Artist"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VeJ-55-6Px" firstAttribute="top" secondItem="qm8-TA-Yub" secondAttribute="top" id="2ad-7q-gIk"/>
+                            <constraint firstItem="VeJ-55-6Px" firstAttribute="trailing" secondItem="qm8-TA-Yub" secondAttribute="trailing" id="3KA-ue-2g3"/>
+                            <constraint firstItem="VeJ-55-6Px" firstAttribute="leading" secondItem="qm8-TA-Yub" secondAttribute="leading" id="D4v-jF-387"/>
+                            <constraint firstItem="qm8-TA-Yub" firstAttribute="trailing" secondItem="cQ0-o4-RPB" secondAttribute="trailing" constant="20" id="E8R-Jz-JIZ"/>
+                            <constraint firstItem="Y9T-aO-xef" firstAttribute="trailing" secondItem="qm8-TA-Yub" secondAttribute="trailing" id="F9d-iX-M5E"/>
+                            <constraint firstItem="Y9T-aO-xef" firstAttribute="leading" secondItem="qm8-TA-Yub" secondAttribute="leading" id="GDq-D5-zKL"/>
+                            <constraint firstItem="cQ0-o4-RPB" firstAttribute="top" secondItem="VeJ-55-6Px" secondAttribute="bottom" id="MqY-Ox-5oi"/>
+                            <constraint firstItem="cQ0-o4-RPB" firstAttribute="top" secondItem="qm8-TA-Yub" secondAttribute="top" constant="44" id="PrT-Nd-11s"/>
+                            <constraint firstItem="Y9T-aO-xef" firstAttribute="top" secondItem="cQ0-o4-RPB" secondAttribute="bottom" constant="8" id="Vb4-98-VYu"/>
+                            <constraint firstItem="Y9T-aO-xef" firstAttribute="bottom" secondItem="qm8-TA-Yub" secondAttribute="bottom" id="f2M-NU-aWH"/>
+                            <constraint firstItem="Y9T-aO-xef" firstAttribute="top" secondItem="cQ0-o4-RPB" secondAttribute="bottom" constant="8" id="oZS-6c-cre"/>
+                            <constraint firstItem="cQ0-o4-RPB" firstAttribute="leading" secondItem="qm8-TA-Yub" secondAttribute="leading" constant="20" id="rab-SZ-bxH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qm8-TA-Yub"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="VeJ-55-6Px" id="taJ-6i-yO3"/>
+                        <outlet property="segmentedControl" destination="cQ0-o4-RPB" id="6aK-eg-0tb"/>
+                        <outlet property="tableView" destination="Y9T-aO-xef" id="3Ee-WQ-s4t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AbP-bs-Cac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="84.375"/>
+        </scene>
+    </scenes>
+</document>

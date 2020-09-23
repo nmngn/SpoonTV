@@ -9,26 +9,27 @@
 import Foundation
 import ObjectMapper
 import RxSwift
+import MGArchitecture
 
 protocol SearchRepositorriesType {
-    func getSearchMovieRepo(input: SearchForMovieRequest) -> Observable<[SearchMovie]>
-    func getSearchArtistRepo(input: SearchForArtistRequest) -> Observable<[SearchArtist]>
+    func getSearchMovieRepo(page: Int, input: SearchForMovieRequest) -> Observable<PagingInfo<Movie>>
+    func getSearchArtistRepo(page: Int, input: SearchForArtistRequest) -> Observable<PagingInfo<Artist>>
 }
 
 final class SearchRepositories: SearchRepositorriesType {
     private let api = APIService.shared
     
-    func getSearchMovieRepo(input: SearchForMovieRequest) -> Observable<[SearchMovie]> {
+    func getSearchMovieRepo(page: Int, input: SearchForMovieRequest) -> Observable<PagingInfo<Movie>> {
         return api.request(input: input)
-            .map {(response: ResultSearchMovie) -> [SearchMovie] in
-                return response.resultSearchMovie
+            .map {(response: ResultSearchMovie) in
+                return PagingInfo(page: page, items: response.resultSearchMovie)
             }
     }
     
-    func getSearchArtistRepo(input: SearchForArtistRequest) -> Observable<[SearchArtist]> {
+    func getSearchArtistRepo(page: Int, input: SearchForArtistRequest) -> Observable<PagingInfo<Artist>> {
         return api.request(input: input)
-            .map {(response: ResultSearchArtist) -> [SearchArtist] in
-                return response.resultSearchArtist
+            .map {(response: ResultSearchArtist) in
+                return PagingInfo(page: page, items: response.resultSearchArtist)
             }
     }
 }

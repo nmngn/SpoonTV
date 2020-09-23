@@ -51,9 +51,20 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
         let artistViewModel = ArtistViewModel(navigator: artistNavigator, useCase: artistUseCase)
         artistController.bindViewModel(to: artistViewModel)
                 
-        mainTabBarController.do {
-            $0.viewControllers = [discoverController, genreController, artistController]
+// MARK: - Search Tabbar
+                let searchController = SearchViewController.instantiate().then {
+                    $0.tabBarItem = UITabBarItem(title: "Search",
+                                                 image: UIImage(systemName: "magnifyingglass"),
+                                                 selectedImage: nil)
+                }
+                let searchNavigator = SearchNavigator(navigator: navigator)
+                let searchUseCase = SearchUseCase()
+                let searchViewModel = SearchViewModel(navigator: searchNavigator, useCase: searchUseCase)
+                searchController.bindViewModel(to: searchViewModel)
+                
+                mainTabBarController.do {
+                    $0.viewControllers = [discoverController, genreController, artistController, searchController]
+                }
+                return [discoverController, genreController, artistController, searchController]
+            }
         }
-        return [discoverController, genreController, artistController]
-    }
-}
