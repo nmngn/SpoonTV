@@ -1,5 +1,5 @@
 //
-//  ResultPopular.swift
+//  ResultSimilar.swift
 //  SpoonTV
 //
 //  Created by Nam Ngây on 9/4/20.
@@ -9,14 +9,14 @@
 import Foundation
 import ObjectMapper
 
-final class ResultPopular: Mappable {
-    var resultPopular = [PopularMovie]()
+final class SimilarResponse: Mappable {
+    var resultSimilar = [SimilarMovie]()
     
     required init(map: Map) {
         mapping(map: map)
     }
     
     func mapping(map: Map) {
-        resultPopular <- map["results"]
+        resultSimilar <- map["results"]
     }
 }

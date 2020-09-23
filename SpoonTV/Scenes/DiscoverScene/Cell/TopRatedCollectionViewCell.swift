@@ -15,9 +15,9 @@ final class TopRatedCollectionViewCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var topRatedImage: UIImageView!
     @IBOutlet private weak var topRatedTitle: UILabel!
     
-    func getContent(_ topRated: TopRatedMovie) {
-        topRatedImage.sd_setImage(with: URL(string: GetImage.getImage + topRated.posterPath), completed: nil)
+    func getContent(_ topRated: Movie) {
+        topRatedImage.sd_setImage(with: URL(string: GetImage.getImage + topRated.moviePoster), completed: nil)
         topRatedImage.makeRound()
-        topRatedTitle.text = topRated.originalTitle
+        topRatedTitle.text = topRated.movieTitle
     }
 }

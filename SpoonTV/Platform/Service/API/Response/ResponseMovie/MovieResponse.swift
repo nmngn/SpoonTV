@@ -1,22 +1,22 @@
 //
-//  ResultUpComing.swift
+//  ResultMovie.swift
 //  SpoonTV
 //
-//  Created by Nam Ngây on 9/4/20.
+//  Created by Nam Ngây on 9/21/20.
 //  Copyright © 2020 Nam Ngây. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-final class ResultUpComing: Mappable {
-    var resultUpcoming = [UpComingMovie]()
+final class MovieResponse: Mappable {
+    var resultMovie = [Movie]()
     
     required init(map: Map) {
         mapping(map: map)
     }
     
     func mapping(map: Map) {
-        resultUpcoming <- map["results"]
+        resultMovie <- map["results"]
     }
 }

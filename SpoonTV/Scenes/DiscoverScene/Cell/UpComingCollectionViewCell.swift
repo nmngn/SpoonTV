@@ -15,9 +15,9 @@ final class UpComingCollectionViewCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var upComingImage: UIImageView!
     @IBOutlet private weak var upComingTitle: UILabel!
     
-    func setContent(_ upComing: UpComingMovie) {
-        upComingImage.sd_setImage(with: URL(string: GetImage.getImage + upComing.posterPath), completed: nil)
+    func setContent(_ upComing: Movie) {
+        upComingImage.sd_setImage(with: URL(string: GetImage.getImage + upComing.moviePoster), completed: nil)
         upComingImage.makeRound()
-        upComingTitle.text = upComing.originalTitle
+        upComingTitle.text = upComing.movieTitle
     }
 }

@@ -9,36 +9,39 @@
 import Foundation
 import ObjectMapper
 import RxSwift
+import MGArchitecture
 
 protocol MovieRepositoriesType {
-    func getPopularRepo(input: PopularRequest) -> Observable<[PopularMovie]>
-    func getTopRatedRepo(input: TopRatedRequest) -> Observable<[TopRatedMovie]>
-    func getUpComingRepo(input: UpComingRequest) -> Observable<[UpComingMovie]>
+    func getPopularRepo(page: Int, input: PopularRequest) -> Observable<PagingInfo<Movie>>
+    func getTopRatedRepo(page: Int, input: TopRatedRequest) -> Observable<PagingInfo<Movie>>
+    func getUpComingRepo(page: Int, input: UpComingRequest) -> Observable<PagingInfo<Movie>>
     func getDetailMovieRepo(input: DetailRequest) -> Observable<MovieDetail>
     func getSimilarMovieRepo(input: SimilarRequest) -> Observable<[SimilarMovie]>
+    func getMoreMovie(type: MoreMovie, page: Int, input: GetMoreMovieRequest) -> Observable<PagingInfo<Movie>>
 }
 
 final class MovieRepositories: MovieRepositoriesType {
+    
     private let api = APIService.shared
     
-    func getPopularRepo(input: PopularRequest) -> Observable<[PopularMovie]> {
+    func getPopularRepo(page: Int, input: PopularRequest) -> Observable<PagingInfo<Movie>> {
         return api.request(input: input)
-            .map {(response: ResultPopular) -> [PopularMovie] in
-                return response.resultPopular
+            .map {(response: MovieResponse) in
+                return PagingInfo(page: page, items: response.resultMovie)
             }
     }
     
-    func getTopRatedRepo(input: TopRatedRequest) -> Observable<[TopRatedMovie]> {
+    func getTopRatedRepo(page: Int, input: TopRatedRequest) -> Observable<PagingInfo<Movie>> {
         return api.request(input: input)
-            .map {(response: ResultTopRated) -> [TopRatedMovie] in
-                return response.resultTopRated
+            .map {(response: MovieResponse) in
+                return PagingInfo(page: page, items: response.resultMovie)
             }
     }
     
-    func getUpComingRepo(input: UpComingRequest) -> Observable<[UpComingMovie]> {
+    func getUpComingRepo(page: Int, input: UpComingRequest) -> Observable<PagingInfo<Movie>> {
         return api.request(input: input)
-            .map {(response: ResultUpComing) -> [UpComingMovie] in
-                return response.resultUpcoming
+            .map {(response: MovieResponse) in
+                return PagingInfo(page: page, items: response.resultMovie)
             }
     }
     
@@ -51,8 +54,16 @@ final class MovieRepositories: MovieRepositoriesType {
     
     func getSimilarMovieRepo(input: SimilarRequest) -> Observable<[SimilarMovie]> {
         return api.request(input: input)
-            .map {(response: ResultSimilar) -> [SimilarMovie] in
+            .map {(response: SimilarResponse) -> [SimilarMovie] in
                 return response.resultSimilar
+            }
+    }
+    
+    func getMoreMovie(type: MoreMovie, page: Int, input: GetMoreMovieRequest) -> Observable<PagingInfo<Movie>> {
+        let request = GetMoreMovieRequest(type: type, page: page)
+        return api.request(input: request)
+            .map {(response: MovieResponse) in
+                return PagingInfo(page: page, items: response.resultMovie)
             }
     }
 }
