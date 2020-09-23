@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 final class ResultSearchMovie: Mappable {
-    var resultSearchMovie = [SearchMovie]()
+    var resultSearchMovie = [Movie]()
     
     required init(map: Map) {
         mapping(map: map)
