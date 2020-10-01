@@ -18,7 +18,9 @@ struct DiscoverViewModel {
 extension DiscoverViewModel {
     struct Input {
         let loadTrigger: Driver<Void>
-        let selectTrigger: Driver<IndexPath>
+        let selectPopularTrigger: Driver<IndexPath>
+        let selectTopRatedTrigger: Driver<IndexPath>
+        let selectUpComingTrigger: Driver<IndexPath>
         let morePopularTrigger: Driver<Void>
         let moreTopRatedTrigger: Driver<Void>
         let moreUpComingTrigger: Driver<Void>
@@ -33,6 +35,9 @@ extension DiscoverViewModel {
         let popularMovie: Driver<[Movie]>
         let topRatedMovie: Driver<[Movie]>
         let upComingMovie: Driver<[Movie]>
+        let popularSelected: Driver<Void>
+        let topRatedSelected: Driver<Void>
+        let upComingSelected: Driver<Void>
     }
     
     func transfrom(_ input: Input) -> Output {
@@ -78,6 +83,32 @@ extension DiscoverViewModel {
             .do(onNext: { _ in
                 self.navigator.toSeeMoreScene(moreMovie: .upComing)
             })
+        let selectPopular = input.selectPopularTrigger
+            .withLatestFrom(popular) { indexPath, popularDetail in
+                return popularDetail[indexPath.row]
+            }
+        .do(onNext: {
+            self.navigator.toDetailScene($0.movieId)
+        })
+            .mapToVoid()
+        
+        let selectTopRated = input.selectTopRatedTrigger
+            .withLatestFrom(popular) { indexPath, topRatedDetail in
+                return topRatedDetail[indexPath.row]
+            }
+        .do(onNext: {
+            self.navigator.toDetailScene($0.movieId)
+        })
+            .mapToVoid()
+        
+        let selectUpComing = input.selectUpComingTrigger
+            .withLatestFrom(popular) { indexPath, upComingDetail in
+                return upComingDetail[indexPath.row]
+            }
+        .do(onNext: {
+            self.navigator.toDetailScene($0.movieId)
+        })
+            .mapToVoid()
         
         return Output(error: errorTracker.asDriver(),
                       isLoading: activityIndicator.asDriver(),
@@ -86,6 +117,10 @@ extension DiscoverViewModel {
                       moreUpcoming: moreUpComing,
                       popularMovie: popular,
                       topRatedMovie: topRated,
-                      upComingMovie: upComing)
+                      upComingMovie: upComing,
+                      popularSelected: selectPopular,
+                      topRatedSelected: selectTopRated,
+                      upComingSelected: selectUpComing
+        )
     }
 }

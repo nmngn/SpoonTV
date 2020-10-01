@@ -10,12 +10,12 @@ import UIKit
 
 protocol DiscoverNavigatorType {
     func toSeeMoreScene(moreMovie: MoreMovie)
-    
+    func toDetailScene(_ id: Int)
 }
 
 struct DiscoverNavigator: DiscoverNavigatorType {
     unowned var navigation: UINavigationController
-
+    
     func toSeeMoreScene(moreMovie: MoreMovie) {
         let controller = SeeMoreViewController.instantiate()
         let useCase = SeeMoreUseCase()
@@ -24,4 +24,14 @@ struct DiscoverNavigator: DiscoverNavigatorType {
         controller.bindViewModel(to: viewModel)
         navigation.pushViewController(controller, animated: true)
     }
+    
+    func toDetailScene(_ id: Int) {
+        let controller = DetailViewController.instantiate()
+        let useCase = DetailMovieUseCase(movieId: id)
+        let navigator = DetailMovieNavigator(navigation: navigation)
+        let viewModel = DetailMovieViewModel(navigator: navigator, useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigation.pushViewController(controller, animated: true)
+    }
+    
 }

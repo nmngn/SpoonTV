@@ -11,37 +11,20 @@ import MGArchitecture
 import RxSwift
 import RxCocoa
 
-enum SearchDataType {
-    case movie(Movie)
-    case artist(Artist)
-}
-
 protocol SearchUseCaseType {
-    func getMoreSearchData(page: Int, query: String, type: Int) -> Observable<PagingInfo<SearchDataType>>
-    func getSearchData(query: String, type: Int) -> Observable<PagingInfo<SearchDataType>>
+    func getMoreSearchData(page: Int, query: String) -> Observable<PagingInfo<Movie>>
+    func getSearchData(query: String) -> Observable<PagingInfo<Movie>>
 }
 
 struct SearchUseCase: SearchUseCaseType {
     let repositories = SearchRepositories()
     
-    func getSearchData(query: String, type: Int) -> Observable<PagingInfo<SearchDataType>> {
-        getMoreSearchData(page: 1, query: query, type: type)
+    func getSearchData(query: String) -> Observable<PagingInfo<Movie>> {
+        getMoreSearchData(page: 1, query: query)
     }
     
-    func getMoreSearchData(page: Int, query: String, type: Int) -> Observable<PagingInfo<SearchDataType>> {
-        switch type {
-        case 0:
-            let request = SearchForMovieRequest(query: query, page: page)
-            return repositories.getSearchMovieRepo(page: page, input: request).map {
-                let items = $0.items.map { SearchDataType.movie($0) }
-                return PagingInfo(page: page, items: items)
-            }
-        default:
-            let request = SearchForArtistRequest(query: query, page: page)
-            return repositories.getSearchArtistRepo(page: page, input: request).map {
-                let items = $0.items.map { SearchDataType.artist($0) }
-                return PagingInfo(page: page, items: items)
-            }
-        }
+    func getMoreSearchData(page: Int, query: String) -> Observable<PagingInfo<Movie>> {
+        let request = SearchForMovieRequest(query: query, page: page)
+        return repositories.getSearchMovieRepo(page: page, input: request)
     }
 }

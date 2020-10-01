@@ -43,10 +43,9 @@ final class DiscoverViewController: UIViewController, BindableType, Reusable {
     
     func bindViewModel() {
         let input = DiscoverViewModel.Input(loadTrigger: Driver.just(()),
-                                            selectTrigger: Driver.merge(
-                                                popularCollectionView.rx.itemSelected.asDriver(),
-                                                topRatedCollectionView.rx.itemSelected.asDriver(),
-                                                upComingCollectionView.rx.itemSelected.asDriver()),
+                                            selectPopularTrigger: popularCollectionView.rx.itemSelected.asDriver(),
+                                            selectTopRatedTrigger: topRatedCollectionView.rx.itemSelected.asDriver(),
+                                            selectUpComingTrigger: upComingCollectionView.rx.itemSelected.asDriver(),
                                             morePopularTrigger: seeMorePopular.rx.tap.asDriver(),
                                             moreTopRatedTrigger: seeMoreTopRated.rx.tap.asDriver(),
                                             moreUpComingTrigger: seeMoreUpComing.rx.tap.asDriver())
@@ -95,6 +94,15 @@ final class DiscoverViewController: UIViewController, BindableType, Reusable {
             .drive()
             .disposed(by: rx.disposeBag)
         output.moreUpcoming
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.popularSelected
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.topRatedSelected
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.upComingSelected
             .drive()
             .disposed(by: rx.disposeBag)
     }

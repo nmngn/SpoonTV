@@ -19,7 +19,7 @@ struct MovieDetail: Mappable {
     var backdropPath = ""
     var productionCompany = [ProductionCompany]()
     var productionCountry = [ProductionCountry]()
-    var releaseDate: Date?
+    var releaseDate = ""
     var runtime = 0
     var spokenLanguage = [SpokenLanguage]()
     var status = ""

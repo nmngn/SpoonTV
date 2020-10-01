@@ -1,22 +1,22 @@
 //
-//  ResultSimilar.swift
+//  ActorInMovieResponse.swift
 //  SpoonTV
 //
-//  Created by Nam Ngây on 9/4/20.
+//  Created by Nam Ngây on 10/1/20.
 //  Copyright © 2020 Nam Ngây. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-final class SimilarResponse: Mappable {
-    var resultSimilar = [Movie]()
+final class ActorInMovieResponse: Mappable {
+    var resultActor = [ActorOfMovie]()
     
     required init(map: Map) {
         mapping(map: map)
     }
     
     func mapping(map: Map) {
-        resultSimilar <- map["results"]
+        resultActor <- map["cast"]
     }
 }

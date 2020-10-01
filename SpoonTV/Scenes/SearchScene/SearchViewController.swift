@@ -17,7 +17,6 @@ final class SearchViewController: UIViewController, BindableType {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: LoadMoreTableView!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     var viewModel: SearchViewModel!
     
@@ -39,12 +38,11 @@ final class SearchViewController: UIViewController, BindableType {
                                         loadTrigger: Driver.just(()),
                                         reloadTrigger: tableView.refreshTrigger,
                                         loadMoreTrigger: tableView.loadMoreTrigger,
-                                        selectTrigger: tableView.rx.itemSelected.asDriver(),
-                                        segmentIndexTrigger: segmentedControl.rx.value.asDriver())
+                                        selectMovieTrigger: tableView.rx.itemSelected.asDriver())
         
         let output = viewModel.transform(input)
         
-        output.searchData
+        output.dataSearch
             .drive(self.tableView.rx.items) { tableView, index, item in
                     let indexPath = IndexPath(item: index, section: 0)
                     let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SearchTableViewCell.self)
@@ -56,15 +54,16 @@ final class SearchViewController: UIViewController, BindableType {
         output.isLoading
             .drive()
             .disposed(by: rx.disposeBag)
-        
         output.isLoadingMore
             .drive(tableView.isLoadingMore)
             .disposed(by: rx.disposeBag)
-    
         output.isEmptyData
             .drive()
             .disposed(by: rx.disposeBag)
         output.isEmptyInput
+            .drive()
+            .disposed(by: rx.disposeBag)
+        output.selectedMovie
             .drive()
             .disposed(by: rx.disposeBag)
     }
