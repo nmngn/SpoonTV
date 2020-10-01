@@ -17,6 +17,6 @@ struct ProductionCountry: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        countryName <- map["name"]
+        countryName <- map["iso_3166_1"]
     }
 }

@@ -38,6 +38,7 @@ struct APIService {
                                           encoding: input.encoding)
                 .validate(statusCode: 200..<500)
                 .responseJSON { response in
+                    print(response.request?.url?.absoluteString)
                     switch response.result {
                     case .success(let value):
                         if let statusCode = response.response?.statusCode {

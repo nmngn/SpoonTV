@@ -23,18 +23,18 @@ extension SearchViewModel: ViewModelType {
         let loadTrigger: Driver<Void>
         let reloadTrigger: Driver<Void>
         let loadMoreTrigger: Driver<Void>
-        let selectTrigger: Driver<IndexPath>
-        let segmentIndexTrigger: Driver<Int>
+        let selectMovieTrigger: Driver<IndexPath>
     }
     
     struct Output {
-        let searchData: Driver<[SearchDataType]>
+        let dataSearch: Driver<[Movie]>
         let error: Driver<Error>
         let isLoading: Driver<Bool>
         let isReloading: Driver<Bool>
         let isLoadingMore: Driver<Bool>
         let isEmptyData: Driver<Bool>
         let isEmptyInput: Driver<Bool>
+        let selectedMovie: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -44,26 +44,26 @@ extension SearchViewModel: ViewModelType {
         let textTrigger = input.textSearch
             .distinctUntilChanged()
             .filter { !$0.isEmpty }
-            .withLatestFrom(input.segmentIndexTrigger) { ($0, $1) }
-            .asDriver()
         
         let reloadTrigger = input.reloadTrigger
             .withLatestFrom(textTrigger)
         
         let loadMoreTrigger = input.loadMoreTrigger
             .withLatestFrom(textTrigger)
-        
+            
         let search = getPage(loadTrigger: Driver.merge(textTrigger),
                              reloadTrigger: reloadTrigger,
                              loadMoreTrigger: loadMoreTrigger) { query, page in
-                                self.useCase.getMoreSearchData(page: page, query: query.0, type: query.1)
+                                self.useCase.getMoreSearchData(page: page, query: query)
                                     .trackError(errorTracker)
                                     .trackActivity(activity)
         }
         
         let (page, error, isLoading, isReloading, isLoadingMore) = search.destructured
         
-        let itemSearch = page.map { $0.items }        
+        let itemSearch = page
+            .map { $0.items }
+        
         let isEmpty = itemSearch
             .map { $0.isEmpty }
             .distinctUntilChanged()
@@ -72,13 +72,22 @@ extension SearchViewModel: ViewModelType {
             .map { $0.isEmpty }
             .distinctUntilChanged()
         
-        return Output(searchData: itemSearch,
-                      error: error.asDriver(),
-                      isLoading: isLoading.asDriver(),
-                      isReloading: isReloading.asDriver(),
-                      isLoadingMore: isLoadingMore.asDriver(),
+        let selectedMovie = input.selectMovieTrigger
+            .withLatestFrom(itemSearch) { index, item in
+                item[index.row]
+            }
+        .do(onNext: {
+            self.navigator.toDetailScene($0.movieId)
+        })
+            .mapToVoid()
+        
+        return Output(dataSearch: itemSearch,
+                      error: error,
+                      isLoading: isLoading,
+                      isReloading: isReloading,
+                      isLoadingMore: isLoadingMore,
                       isEmptyData: isEmpty,
-                      isEmptyInput: isEmptyInput
-        )
+                      isEmptyInput: isEmptyInput,
+                      selectedMovie: selectedMovie)
     }
 }
