@@ -51,13 +51,14 @@ final class SeeMoreViewController: UIViewController, BindableType {
         output.selectedBack
             .drive()
             .disposed(by: rx.disposeBag)
-        
         output.loadMore
             .drive(tableView.isLoadingMore)
             .disposed(by: rx.disposeBag)
-        
         output.refreshing
             .drive(tableView.isRefreshing)
+            .disposed(by: rx.disposeBag)
+        output.selectedMovie
+            .drive()
             .disposed(by: rx.disposeBag)
     }
 }

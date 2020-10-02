@@ -19,7 +19,7 @@ struct DiscoverNavigator: DiscoverNavigatorType {
     func toSeeMoreScene(moreMovie: MoreMovie) {
         let controller = SeeMoreViewController.instantiate()
         let useCase = SeeMoreUseCase()
-        let navigator = SeeMoreNavigator(navigator: navigation)
+        let navigator = SeeMoreNavigator(navigationController: navigation)
         let viewModel = SeeMoreViewModel(navigator: navigator, useCase: useCase, moreMovie: moreMovie)
         controller.bindViewModel(to: viewModel)
         navigation.pushViewController(controller, animated: true)

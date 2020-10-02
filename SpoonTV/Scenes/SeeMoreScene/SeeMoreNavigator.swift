@@ -10,12 +10,22 @@ import UIKit
 
 protocol SeeMoreNavigatorType {
     func back()
+    func toDetailScene(_ id: Int)
 }
 
 struct SeeMoreNavigator: SeeMoreNavigatorType {
-    unowned let navigator: UINavigationController
+    unowned let navigationController: UINavigationController
 
     func back() {
-        navigator.popViewController(animated: true)
+        navigationController.popViewController(animated: true)
+    }
+    
+    func toDetailScene(_ id: Int) {
+        let controller = DetailViewController.instantiate()
+        let useCase = DetailMovieUseCase(movieId: id)
+        let navigator = DetailMovieNavigator(navigator: navigationController)
+        let viewModel = DetailMovieViewModel(navigator: navigator, useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigationController.pushViewController(controller, animated: true)
     }
 }

@@ -33,6 +33,7 @@ extension SeeMoreViewModel: ViewModelType {
         let indicator: Driver<Bool>
         let refreshing: Driver<Bool>
         let loadMore: Driver<Bool>
+        let selectedMovie: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -57,11 +58,19 @@ extension SeeMoreViewModel: ViewModelType {
         let selectedBack = input.backTrigger
             .do(onNext: self.navigator.back)
         
+        let selectedMovie = input.selectTrigger
+            .withLatestFrom(movieList) { index, item in
+                item[index.row]
+            }
+        .do(onNext: { self.navigator.toDetailScene($0.movieId) })
+        .mapToVoid()
+        
         return Output(getMore: movieList,
                       selectedBack: selectedBack,
                       error: error,
                       indicator: indicator,
                       refreshing: refreshing,
-                      loadMore: loadingMore)
+                      loadMore: loadingMore,
+                      selectedMovie: selectedMovie)
     }
 }
