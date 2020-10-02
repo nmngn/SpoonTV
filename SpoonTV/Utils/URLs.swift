@@ -23,9 +23,9 @@ enum URLs {
     
     enum Genres {
         static let list = url + "/genre/movie/list?language=en-US"
-        static let selected = url + "/discover/movie?with_genres=%d?language=en-US"
+        static let selected = url + "/discover/movie?with_genres=%d&language=en-US&sort_by=popularity.desc"
     }
-    
+
     enum Artist {
         static let list = url + "/person/popular?language=en-US"
         static let selected = url + "/person/%d?language=en-US"

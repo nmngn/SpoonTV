@@ -44,8 +44,11 @@ final class GenreViewController: UIViewController, BindableType {
                 return cell
             }
         .disposed(by: rx.disposeBag)
+        
+        output.selectedGenre
+            .drive()
+            .disposed(by: rx.disposeBag)
     }
-    
 }
 
 extension GenreViewController: StoryboardSceneBased {

@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 final class ResultGenreSelected: Mappable {
-    var resultGenreSelected = [GenreSelected]()
+    var resultGenreSelected = [Movie]()
     
     required init(map: Map) {
         mapping(map: map)

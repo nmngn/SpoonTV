@@ -12,8 +12,8 @@ import Alamofire
 
 final class SelectedGenreRequest: BaseRequest {
     
-    required init(page: Int) {
-        let url = String(format: URLs.Genres.selected)
+    required init(page: Int, id: Int) {
+        let url = String(format: URLs.Genres.selected, id)
         let body: [String: Any] = [
             "page": page
         ]

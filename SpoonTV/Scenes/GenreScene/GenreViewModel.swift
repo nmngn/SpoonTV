@@ -26,6 +26,7 @@ extension GenreViewModel {
         let error: Driver<Error>
         let activityIndicator: Driver<Bool>
         let getGenre: Driver<[GenreTabbar]>
+        let selectedGenre: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -39,8 +40,17 @@ extension GenreViewModel {
                 .trackActivity(activityIndicator)
                 .asDriverOnErrorJustComplete()
             }
+        
+        let selectedMovie = input.selectTrigger
+            .withLatestFrom(output) { index, item in
+                item[index.row]
+            }
+            .do(onNext: { self.navigator.toListGenre($0.genreId) })
+            .mapToVoid()
+        
         return Output(error: errorTracker.asDriver(),
                       activityIndicator: activityIndicator.asDriver(),
-                      getGenre: output)
+                      getGenre: output,
+                      selectedGenre: selectedMovie)
     }
 }

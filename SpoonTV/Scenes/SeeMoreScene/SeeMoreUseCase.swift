@@ -13,7 +13,7 @@ import MGArchitecture
 
 protocol SeeMoreUseCaseType {
     func getMoreMovie(type: MoreMovie, page: Int) -> Observable<PagingInfo<Movie>>
-    func getMore(type: MoreMovie) -> Observable<PagingInfo<Movie>>
+    func getMovie(type: MoreMovie) -> Observable<PagingInfo<Movie>>
 }
 
 struct SeeMoreUseCase: SeeMoreUseCaseType {
@@ -23,7 +23,7 @@ struct SeeMoreUseCase: SeeMoreUseCaseType {
         let request = GetMoreMovieRequest(type: type, page: page)
         return repositories.getMoreMovie(type: type, page: page, input: request)
     }
-    func getMore(type: MoreMovie) -> Observable<PagingInfo<Movie>> {
+    func getMovie(type: MoreMovie) -> Observable<PagingInfo<Movie>> {
         getMoreMovie(type: type, page: 1)
     }
 }

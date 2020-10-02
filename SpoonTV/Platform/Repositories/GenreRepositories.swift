@@ -9,10 +9,11 @@
 import Foundation
 import ObjectMapper
 import RxSwift
+import MGArchitecture
 
 protocol GenreRepositoriesType {
     func getListGenreRepo(input: ListGenreRequest) -> Observable<[GenreTabbar]>
-    func getSelectedGenreRepo(input: SelectedGenreRequest) -> Observable<[GenreSelected]>
+    func getSelectedGenreRepo(page: Int, input: SelectedGenreRequest) -> Observable<PagingInfo<Movie>>
 }
 
 final class GenreRepositories: GenreRepositoriesType {
@@ -25,10 +26,10 @@ final class GenreRepositories: GenreRepositoriesType {
             }
     }
     
-    func getSelectedGenreRepo(input: SelectedGenreRequest) -> Observable<[GenreSelected]> {
+    func getSelectedGenreRepo(page: Int, input: SelectedGenreRequest) -> Observable<PagingInfo<Movie>> {
         return api.request(input: input)
-            .map {(response: ResultGenreSelected) -> [GenreSelected] in
-                return response.resultGenreSelected
+            .map {(response: ResultGenreSelected) in
+                return PagingInfo(page: page, items: response.resultGenreSelected)
             }
     }
 }
