@@ -34,11 +34,11 @@ extension ArtistViewModel: ViewModelType {
     func transform(_ input: Input) -> Output {
         let errorTracker = ErrorTracker()
         let activityIndicator = ActivityIndicator()
-        
+
         let getItems = { (page: Int) -> Observable<PagingInfo<Artist>> in
             self.useCase.getMoreArtist(page: page)
-            .trackError(errorTracker)
-            .trackActivity(activityIndicator)
+                .trackError(errorTracker)
+                .trackActivity(activityIndicator)
         }
         
         let loadOutput = getPage(loadTrigger: input.loadTrigger,
@@ -50,8 +50,8 @@ extension ArtistViewModel: ViewModelType {
         
         let artists = page.map { $0.items }
         
-        return Output(error: Driver.merge(error, errorTracker.asDriver()),
-                      isLoading: Driver.merge(isLoading, activityIndicator.asDriver()),
+        return Output(error: Driver.merge(error.asDriver(), errorTracker.asDriver()),
+                      isLoading: isLoading,
                       isReloading: isReloading,
                       isLoadingMore: isLoadingMore,
                       getArtistList: artists)

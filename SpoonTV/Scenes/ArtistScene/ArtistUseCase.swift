@@ -14,10 +14,12 @@ import MGArchitecture
 protocol ArtistUseCaseType {
     func getArtistList() -> Observable<PagingInfo<Artist>>
     func getMoreArtist(page: Int) -> Observable<PagingInfo<Artist>>
+    func getDetailArtist(id: Int) -> Observable<ArtistDetail>
 }
 
 struct ArtistUseCase: ArtistUseCaseType {
     let repositories = ArtistRepositories()
+    let searchRepo = SearchRepositories()
 
     func getArtistList() -> Observable<PagingInfo<Artist>> {
         return getMoreArtist(page: 1)
@@ -26,5 +28,10 @@ struct ArtistUseCase: ArtistUseCaseType {
     func getMoreArtist(page: Int) -> Observable<PagingInfo<Artist>> {
         let request = ListArtistRequest(page: page)
         return repositories.getListArtistRepo(page: page, input: request)
+    }
+    
+    func getDetailArtist(id: Int) -> Observable<ArtistDetail> {
+        let request = SelectedArtistRequest(id: id)
+        return repositories.getSelectedArtistRepo(input: request)
     }
 }

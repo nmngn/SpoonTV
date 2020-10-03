@@ -46,7 +46,7 @@ struct MainTabbarNavigator: MainTabbarNavigatorType {
                                          image: UIImage(systemName: "person"),
                                          selectedImage: nil)
         }
-        let artistNavigator = ArtistNavigator(navigation: navigator)
+        let artistNavigator = ArtistNavigator(navigationController: navigator)
         let artistUseCase = ArtistUseCase()
         let artistViewModel = ArtistViewModel(navigator: artistNavigator, useCase: artistUseCase)
         artistController.bindViewModel(to: artistViewModel)

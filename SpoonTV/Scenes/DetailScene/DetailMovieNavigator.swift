@@ -27,6 +27,5 @@ struct DetailMovieNavigator: DetailMovieNavigatorType {
         let viewModel = DetailMovieViewModel(navigator: navigation, useCase: useCase)
         controller.bindViewModel(to: viewModel)
         navigator.pushViewController(controller, animated: true)
-        
     }
 }

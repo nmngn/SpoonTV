@@ -33,8 +33,8 @@ enum URLs {
     }
     
     enum Search {
-        static let movie = url + "/search/movie?query=%@?language=en-US"
-        static let artist = url + "/search/person?query=%@?language=en-US"
+        static let movie = url + "/search/movie?query=%@&language=en-US"
+        static let artist = url + "/search/person?query=%@&language=en-US"
     }
 }
 

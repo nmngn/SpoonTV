@@ -9,9 +9,13 @@
 import UIKit
 
 protocol ArtistNavigatorType {
-    
+    func toDetailArtistScene(_ id: Int)
 }
 
 struct ArtistNavigator: ArtistNavigatorType {
-    unowned let navigation: UINavigationController
+    unowned let navigationController: UINavigationController
+    
+    func toDetailArtistScene(_ id: Int) {
+        
+    }
 }
