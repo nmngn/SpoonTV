@@ -16,7 +16,6 @@ final class DetailViewController: UIViewController, BindableType {
     
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var imageMovie: UIImageView!
-    @IBOutlet private weak var likeButton: UIButton!
     @IBOutlet private weak var titleMovieLabel: UILabel!
     @IBOutlet private weak var overviewLabel: UITextView!
     @IBOutlet private weak var tagLineLabel: UILabel!
