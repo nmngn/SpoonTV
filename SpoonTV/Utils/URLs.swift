@@ -29,7 +29,7 @@ enum URLs {
     enum Artist {
         static let list = url + "/person/popular?language=en-US"
         static let selected = url + "/person/%d?language=en-US"
-        static let movieOfArtist = url + "/discover/movie?with_people=%d?language=en-US"
+        static let movieOfArtist = url + "/discover/movie?with_people=%d&language=en-US"
     }
     
     enum Search {

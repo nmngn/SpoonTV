@@ -20,6 +20,7 @@ extension DetailMovieViewModel: ViewModelType {
         let loadTrigger: Driver<Void>
         let reloadTrigger: Driver<Void>
         let selectMovieTrigger: Driver<IndexPath>
+        let selecArtistTrigger: Driver<IndexPath>
         let backTrigger: Driver<Void>
     }
     struct Output {
@@ -30,6 +31,7 @@ extension DetailMovieViewModel: ViewModelType {
         let selectedBack: Driver<Void>
         let getActor: Driver<[ActorOfMovie]>
         let selectedMovie: Driver<Void>
+        let selectedArtist: Driver<Void>
     }
     
     func transform(_ input: Input) -> Output {
@@ -74,6 +76,14 @@ extension DetailMovieViewModel: ViewModelType {
             .withLatestFrom(input.reloadTrigger)
             .mapToVoid()
         
+        let selectedArtist = input.selecArtistTrigger
+            .withLatestFrom(actor) { index, item in
+                item[index.row]
+            }
+            .do { self.navigator.toDetailArtistScene($0.actorId)
+            }
+            .mapToVoid()
+
         let selectedBack = input.backTrigger
             .do( onNext: self.navigator.back)
         
@@ -83,6 +93,7 @@ extension DetailMovieViewModel: ViewModelType {
                       getSimilar: similar,
                       selectedBack: selectedBack,
                       getActor: actor,
-                      selectedMovie: selectedMovie)
+                      selectedMovie: selectedMovie,
+                      selectedArtist: selectedArtist)
     }
 }

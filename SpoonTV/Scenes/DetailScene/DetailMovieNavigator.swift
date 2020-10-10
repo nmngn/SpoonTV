@@ -11,21 +11,32 @@ import UIKit
 protocol DetailMovieNavigatorType {
     func back()
     func reloadMovieDetail(_ id: Int)
+    func toDetailArtistScene(_ id: Int)
 }
 
 struct DetailMovieNavigator: DetailMovieNavigatorType {
-    unowned let navigator: UINavigationController
+    unowned let navigationController: UINavigationController
     
     func back() {
-        navigator.popViewController(animated: true)
+        navigationController.popViewController(animated: true)
     }
     
     func reloadMovieDetail(_ id: Int) {
         let controller = DetailViewController.instantiate()
-        let navigation = DetailMovieNavigator(navigator: navigator)
+        let navigation = DetailMovieNavigator(navigationController: navigationController)
         let useCase = DetailMovieUseCase(movieId: id)
         let viewModel = DetailMovieViewModel(navigator: navigation, useCase: useCase)
         controller.bindViewModel(to: viewModel)
-        navigator.pushViewController(controller, animated: true)
+        navigationController.pushViewController(controller, animated: true)
     }
+    
+    func toDetailArtistScene(_ id: Int) {
+        let controller = ArtistDetailViewController.instantiate()
+        let useCase = ArtistDetailUseCase(artistId: id)
+        let navigator = ArtistDetailNavigator(navigationController: navigationController)
+        let viewModel = ArtistDetailViewModel(navigator: navigator, useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigationController.pushViewController(controller, animated: true)
+    }
+
 }

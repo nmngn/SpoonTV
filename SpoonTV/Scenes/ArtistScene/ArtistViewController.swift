@@ -47,6 +47,9 @@ final class ArtistViewController: UIViewController, BindableType {
                 }
             .disposed(by: rx.disposeBag)
         
+        output.selectedArtist
+            .drive()
+            .disposed(by: rx.disposeBag)
         output.isLoading
             .drive()
             .disposed(by: rx.disposeBag)

@@ -51,7 +51,8 @@ final class DetailViewController: UIViewController, BindableType {
         let input = DetailMovieViewModel.Input(loadTrigger: Driver.just(()),
                                                reloadTrigger: Driver.just(()),
                                                selectMovieTrigger:
-                                                    similarMovieCollectionView.rx.itemSelected.asDriver(),
+                                                similarMovieCollectionView.rx.itemSelected.asDriver(),
+                                               selecArtistTrigger: actorCollectionView.rx.itemSelected.asDriver(),
                                                backTrigger: backButton.rx.tap.asDriver())
         
         let output = viewModel.transform(input)
@@ -76,6 +77,9 @@ final class DetailViewController: UIViewController, BindableType {
             }
         .disposed(by: rx.disposeBag)
         
+        output.selectedArtist
+            .drive()
+            .disposed(by: rx.disposeBag)
         output.getDetail
             .drive(self.rx.movieDetail)
             .disposed(by: rx.disposeBag)

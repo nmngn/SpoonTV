@@ -16,6 +16,11 @@ struct ArtistNavigator: ArtistNavigatorType {
     unowned let navigationController: UINavigationController
     
     func toDetailArtistScene(_ id: Int) {
-        
+        let controller = ArtistDetailViewController.instantiate()
+        let useCase = ArtistDetailUseCase(artistId: id)
+        let navigator = ArtistDetailNavigator(navigationController: navigationController)
+        let viewModel = ArtistDetailViewModel(navigator: navigator, useCase: useCase)
+        controller.bindViewModel(to: viewModel)
+        navigationController.pushViewController(controller, animated: true)
     }
 }

@@ -28,6 +28,7 @@ extension ArtistViewModel: ViewModelType {
         let isLoading: Driver<Bool>
         let isReloading: Driver<Bool>
         let isLoadingMore: Driver<Bool>
+        let selectedArtist: Driver<Void>
         let getArtistList: Driver<[Artist]>
     }
     
@@ -50,10 +51,18 @@ extension ArtistViewModel: ViewModelType {
         
         let artists = page.map { $0.items }
         
+        let selectedArtist = input.selectTrigger
+            .withLatestFrom(artists) { index, item in
+                item[index.row]
+            }
+            .do { self.navigator.toDetailArtistScene($0.artistId) }
+            .mapToVoid()
+        
         return Output(error: Driver.merge(error.asDriver(), errorTracker.asDriver()),
                       isLoading: isLoading,
                       isReloading: isReloading,
                       isLoadingMore: isLoadingMore,
+                      selectedArtist: selectedArtist,
                       getArtistList: artists)
     }
 }

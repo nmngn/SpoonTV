@@ -28,7 +28,7 @@ struct DiscoverNavigator: DiscoverNavigatorType {
     func toDetailScene(_ id: Int) {
         let controller = DetailViewController.instantiate()
         let useCase = DetailMovieUseCase(movieId: id)
-        let navigator = DetailMovieNavigator(navigator: navigation)
+        let navigator = DetailMovieNavigator(navigationController: navigation)
         let viewModel = DetailMovieViewModel(navigator: navigator, useCase: useCase)
         controller.bindViewModel(to: viewModel)
         navigation.pushViewController(controller, animated: true)
