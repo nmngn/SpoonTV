@@ -11,6 +11,7 @@ import ObjectMapper
 struct ActorOfMovie: Mappable {
     var actorName = ""
     var actorImage = ""
+    var actorId = 0
     var image: String {
         return GetImage.getImage + actorImage
     }
@@ -20,6 +21,7 @@ struct ActorOfMovie: Mappable {
     }
     
     mutating func mapping(map: Map) {
+        actorId <- map["id"]
         actorName <- map["name"]
         actorImage <- map["profile_path"]
     }

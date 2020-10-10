@@ -23,7 +23,7 @@ struct SeeMoreNavigator: SeeMoreNavigatorType {
     func toDetailScene(_ id: Int) {
         let controller = DetailViewController.instantiate()
         let useCase = DetailMovieUseCase(movieId: id)
-        let navigator = DetailMovieNavigator(navigator: navigationController)
+        let navigator = DetailMovieNavigator(navigationController: navigationController)
         let viewModel = DetailMovieViewModel(navigator: navigator, useCase: useCase)
         controller.bindViewModel(to: viewModel)
         navigationController.pushViewController(controller, animated: true)

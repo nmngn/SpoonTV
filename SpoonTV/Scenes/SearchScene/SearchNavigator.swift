@@ -19,7 +19,7 @@ struct SearchNavigator: SearchNavigatorType {
     
     func toDetailScene(_ id: Int) {
         let controller = DetailViewController.instantiate()
-        let navigation = DetailMovieNavigator(navigator: navigator)
+        let navigation = DetailMovieNavigator(navigationController: navigator)
         let useCase = DetailMovieUseCase(movieId: id)
         let viewModel = DetailMovieViewModel(navigator: navigation, useCase: useCase)
         controller.bindViewModel(to: viewModel)

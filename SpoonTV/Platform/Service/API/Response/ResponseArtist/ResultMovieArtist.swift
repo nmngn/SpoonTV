@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 final class ResultMovieArtist: Mappable {
-    var resultMovieArtist = [MovieOfArtist]()
+    var resultMovieArtist = [Movie]()
     
     required init(map: Map) {
         mapping(map: map)

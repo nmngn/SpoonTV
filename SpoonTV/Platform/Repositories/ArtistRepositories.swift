@@ -14,7 +14,7 @@ import MGArchitecture
 protocol ArtistRepositoriesType {
     func getListArtistRepo(page: Int, input: ListArtistRequest) -> Observable<PagingInfo<Artist>>
     func getSelectedArtistRepo(input: SelectedArtistRequest ) -> Observable<ArtistDetail>
-    func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[MovieOfArtist]>
+    func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[Movie]>
 }
 
 final class ArtistRepositories: ArtistRepositoriesType {
@@ -34,9 +34,9 @@ final class ArtistRepositories: ArtistRepositoriesType {
             .map { $0 }
     }
     
-    func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[MovieOfArtist]> {
+    func getMovieOfArtistRepo(input: MovieOfSeletedRequest) -> Observable<[Movie]> {
         return api.request(input: input)
-            .map {(response: ResultMovieArtist) -> [MovieOfArtist] in
+            .map {(response: ResultMovieArtist) -> [Movie] in
                 return  response.resultMovieArtist
             }
     }
